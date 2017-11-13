@@ -87,27 +87,28 @@ public class MainActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Runnable r = new Runnable() {
-                    @Override
-                    public void run() {
-                        doStuff(0, R.raw.guitarc4);
-                    }
-                };
-
-                Thread t1 = new Thread(r);
-                t1.start();
-                long futureTime = System.currentTimeMillis() + 500;
-                while(System.currentTimeMillis() < futureTime){
-                    synchronized (this){
-                        try{
-                            wait(futureTime - System.currentTimeMillis());
-
+                while (true) {
+                    Runnable r = new Runnable() {
+                        @Override
+                        public void run() {
+                            doStuff(0, R.raw.guitarc4);
                         }
-                        catch(Exception e){
+                    };
+                    Thread t1 = new Thread(r);
+                    t1.start();
+
+                    long futureTime = System.currentTimeMillis() + 500;
+                    while (System.currentTimeMillis() < futureTime) {
+                        synchronized (this) {
+                            try {
+                                wait(futureTime - System.currentTimeMillis());
+
+                            } catch (Exception e) {
+                            }
                         }
                     }
+                    doStuff(1, R.raw.guitarc3);
                 }
-                doStuff(1, R.raw.guitarc3);
             }
         });
     }
