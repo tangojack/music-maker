@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/Recalibrate"
+        android:title="@string/ReCalibrate"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/Recordings"
+        android:title="@string/Recordings"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/ChordList"
+        android:title="@string/ChordList"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/SongList"
+        android:title="@string/SongList"
+        app:showAsAction="never"/>
+</menu>

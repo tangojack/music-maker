@@ -1,14 +1,7 @@
 <resources>
     <string name="app_name">music-maker</string>
-    <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
-    </string-array>
-
+    <string name="ReCalibrate">Re-Calibrate</string>
+    <string name="Recordings">Recordings</string>
+    <string name="ChordList">Chord List</string>
+    <string name="SongList">Song List</string>
 </resources>
