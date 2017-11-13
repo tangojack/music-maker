@@ -49,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
 //        }
         stream[stream_id] = getResources().openRawResource(resource_id);
     }
+    boolean flag=true;
+    private void pauseclick(){
+        flag=false;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,12 +86,19 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 //        setResource(0, R.raw.guitarc4);
 //        setResource(1, R.raw.guitarc3);
-        
+        Button pause=(Button) findViewById(R.id.button2);
+        pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                pauseclick();
+            }
+        });
         Button play = (Button) findViewById(R.id.play);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                while (true) {
+                while (flag) {
                     Runnable r = new Runnable() {
                         @Override
                         public void run() {
