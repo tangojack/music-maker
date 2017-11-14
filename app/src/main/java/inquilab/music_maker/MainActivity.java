@@ -12,10 +12,12 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
     Spinner minimenu;
     boolean isPlaying = false;
     boolean recorded=true;
+    ToggleButton a;
+    ToggleButton b;
+    ToggleButton c;
+    ToggleButton d;
+
+
 
     String[] menu={"Recently Played","Most Used","Songs","dummy"};
 
@@ -140,6 +148,77 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        a = (ToggleButton) findViewById(R.id.Toggle1);
+        b = (ToggleButton) findViewById(R.id.Toggle2);
+        c = (ToggleButton) findViewById(R.id.Toggle3);
+        d = (ToggleButton) findViewById(R.id.Toggle4);
+
+        a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+
+                }
+                else
+                {
+
+                }
+
+            }
+        });
+
+        b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+
+                }
+                else
+                {
+
+                }
+
+            }
+        });
+
+        c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+
+                }
+                else
+                {
+
+                }
+
+            }
+        });
+
+        d.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+
+                }
+                else
+                {
+
+                }
+
+            }
+        });
+
+
 
         //Making AudioTracks
         int minBufferSize = AudioTrack.getMinBufferSize(44100, AudioFormat.CHANNEL_OUT_STEREO, AudioFormat.ENCODING_PCM_16BIT);
