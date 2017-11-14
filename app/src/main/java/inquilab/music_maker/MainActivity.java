@@ -3,7 +3,6 @@ package inquilab.music_maker;
 import android.media.AudioAttributes;
 import android.media.AudioFormat;
 import android.media.AudioTrack;
-import android.os.health.SystemHealthManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -35,6 +34,35 @@ public class MainActivity extends AppCompatActivity {
 
     String[] menu={"Recently Played","Most Used","Songs","dummy"};
 
+    private class PlayOnClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View view) {
+            Runnable r = new Runnable() {
+                @Override
+                public void run() {
+                    isPlaying = true;
+                    play();
+                }
+            };
+            Thread t1 = new Thread(r);
+            t1.start();
+        }
+    }
+
+    private class PauseOnClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View view) {
+            Runnable r = new Runnable() {
+                @Override
+                public void run() {
+                    isPlaying = false;
+                    pause();
+                }
+            };
+            Thread t1 = new Thread(r);
+            t1.start();
+        }
+    }
     private AudioTrack[] track = new AudioTrack[2];
     private InputStream[] stream = new InputStream[2];
     private byte[][] music = new byte[2][];
@@ -44,14 +72,16 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
     private void play(){
-
-            Runnable r = new Runnable() {
+        while(isPlaying) {
+            //Make these AsyncTasks for reference
+            //https://stackoverflow.com/questions/7509232/multiple-audiotracks-single-thread-or-multiple
+            Runnable r1 = new Runnable() {
                 @Override
                 public void run() {
                     doStuff(0, R.raw.guitarc4);
                 }
             };
-            Thread t1 = new Thread(r);
+            Thread t1 = new Thread(r1);
             t1.start();
 
             long futureTime = System.currentTimeMillis() + 5000;
@@ -60,12 +90,18 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         wait(futureTime - System.currentTimeMillis());
 
-                    } catch (Exception e) {
-                    }
+                    } catch (Exception e) {}
                 }
             }
-            doStuff(1, R.raw.guitarc3);
-
+            Runnable r2 = new Runnable() {
+                @Override
+                public void run() {
+                    doStuff(1, R.raw.guitarc3);
+                }
+            };
+            Thread t2 = new Thread(r2);
+            t2.start();
+        }
     }
     private void pause(){
         track[0].pause();
@@ -74,12 +110,12 @@ public class MainActivity extends AppCompatActivity {
         track[1].flush();
     }
     private void doStuff(int stream_id, int resource_id) {
-
         setResource(stream_id, resource_id);
         music[stream_id] = null; // feed in increments of 512 bytes
         int i = 0;
         try{
             music[stream_id] = new byte[512];
+
             track[stream_id].play();
             while((i = stream[stream_id].read(music[stream_id])) != -1)
             {
@@ -142,31 +178,10 @@ public class MainActivity extends AppCompatActivity {
         bpmtext.setText("BPM");
 
         play = (Button) findViewById(R.id.play);
+        play.setOnClickListener(new PlayOnClickListener());
 
-        play.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                play();
-//                if (isPlaying) {
-//                    play.setText("Play");
-//                    isPlaying = false;
-//                    pause();
-//                }
-//                else {
-//                    play.setText("Pause");
-//                    Log.d(getClass().getName(), "Set text to Pause: " );
-//                    isPlaying = true;
-//                    play();
-//                    Log.d(getClass().getName(), "Play is done " );
-//                }
-            }
-        });
         record=(Button) findViewById(R.id.record);
-        record.setText("Record");
-        record.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                pause();
-            }
-        });
+        record.setOnClickListener(new PauseOnClickListener());
 
         save=(Button) findViewById(R.id.save);
         save.setText("Save");

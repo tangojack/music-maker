@@ -130,44 +130,44 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="20dp">-->
 
-        <ToggleButton
-            android:id="@+id/Toggle5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U"/>
-        <ToggleButton
-            android:id="@+id/Toggle6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U"/>
-        <ToggleButton
-            android:id="@+id/Toggle7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U"/>
-        <ToggleButton
-            android:id="@+id/Toggle8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U"/>
+        <!--<ToggleButton-->
+            <!--android:id="@+id/Toggle5"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:checked="true"-->
+            <!--android:textOff="D"-->
+            <!--android:textOn="U"/>-->
+        <!--<ToggleButton-->
+            <!--android:id="@+id/Toggle6"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:checked="true"-->
+            <!--android:textOff="D"-->
+            <!--android:textOn="U"/>-->
+        <!--<ToggleButton-->
+            <!--android:id="@+id/Toggle7"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:checked="true"-->
+            <!--android:textOff="D"-->
+            <!--android:textOn="U"/>-->
+        <!--<ToggleButton-->
+            <!--android:id="@+id/Toggle8"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:checked="true"-->
+            <!--android:textOff="D"-->
+            <!--android:textOn="U"/>-->
 
 
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
 
     <LinearLayout
@@ -182,7 +182,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:text="Pause"/>
 
         <Button
             android:id="@+id/play"
