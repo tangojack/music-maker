@@ -1,5 +1,6 @@
 package inquilab.music_maker;
 
+import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.AudioFormat;
 import android.media.AudioTrack;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -18,6 +20,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import android.content.Context;
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -292,29 +296,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
 
 
-            switch position {
-
-            case 0:
+            switch (position) {
 
             case 1:
 
+                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                startActivity(intent);
+
+                break;
+
             case 2:
+                break;
+
+            case 3:
+                break;
 
         }
 
-        }
+
 
 
     }
 
-    @Override
     public void onNothingSelected(AdapterView<?> arg0) {
 // TODO Auto-generated method stub
 
-    }*/
+    }
 
 
 
