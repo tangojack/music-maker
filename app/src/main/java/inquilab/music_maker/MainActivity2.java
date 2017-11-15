@@ -20,29 +20,44 @@ import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    ListView recordings;
-    ArrayList<String> lines = new ArrayList<>();
+    ListView record;
+    //ArrayList<String> lines = new ArrayList<>();
 
 
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.recordings);
 
-        String filePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/storage/emulated/0/Downloads/";
-        File notes = new File(filePath); //getting the notes dir
+        try {
+            String filePath = "/storage/emulated/0/Download";
+
+            File dir = new File(filePath);
+
+            File[] list = dir.listFiles();
+
+            String[] theNamesOfFiles = new String[list.length];
+            for (int i = 0; i < theNamesOfFiles.length; i++) {
+                theNamesOfFiles[i] = list[i].getName();
+            }
 
 
-        for (File file : notes.listFiles()) { //iterating the files in the dir
-            lines.add(file.getName());
+            ArrayAdapter<String> ab=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, theNamesOfFiles);
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,lines);
-            recordings.setAdapter(adapter);
+        }
+        catch(NullPointerException e){
+
+            e.printStackTrace();
 
         }
 
+
+
+
     }
 
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+    }
+
+  /*  public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
 
 
         FileInputStream fileInputStream = null;
@@ -54,9 +69,9 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     }
+*/
 
 
-}
 
 
 

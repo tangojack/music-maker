@@ -11,7 +11,7 @@
         android:title="@string/ReCalibrate"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/Recordings"
+    <item android:id="@+id/rec"
         android:title="@string/Recordings"
         app:showAsAction="never"/>
 

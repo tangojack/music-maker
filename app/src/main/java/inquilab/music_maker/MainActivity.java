@@ -1,15 +1,18 @@
 package inquilab.music_maker;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.AudioFormat;
 import android.media.AudioTrack;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,10 +40,8 @@ public class MainActivity extends AppCompatActivity {
     Spinner minimenu;
     boolean isPlaying = false;
     boolean recorded=true;
-    ToggleButton a;
-    ToggleButton b;
-    ToggleButton c;
-    ToggleButton d;
+    Button a,b,c,d,e,f,g,h;
+    Button globalbutton;
 
 
 
@@ -78,11 +79,8 @@ public class MainActivity extends AppCompatActivity {
     private AudioTrack[] track = new AudioTrack[2];
     private InputStream[] stream = new InputStream[2];
     private byte[][] music = new byte[2][];
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navmenu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+
+
     private void play(){
         while(isPlaying) {
             //Make these AsyncTasks for reference
@@ -153,74 +151,129 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        a = (ToggleButton) findViewById(R.id.Toggle1);
-        b = (ToggleButton) findViewById(R.id.Toggle2);
-        c = (ToggleButton) findViewById(R.id.Toggle3);
-        d = (ToggleButton) findViewById(R.id.Toggle4);
 
-        a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
+        a = (Button) findViewById(R.id.Toggle1);
+        b = (Button) findViewById(R.id.Toggle2);
+        c = (Button) findViewById(R.id.Toggle3);
+        d = (Button) findViewById(R.id.Toggle4);
+        e = (Button) findViewById(R.id.Toggle5);
+        f = (Button) findViewById(R.id.Toggle6);
+        g = (Button) findViewById(R.id.Toggle7);
+        h = (Button) findViewById(R.id.Toggle8);
+
+
+        CharSequence colors[] = new CharSequence[] {"Up", "Down", "Chunk", "Rest"};
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select your strum");
+        builder.setItems(colors, new DialogInterface.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked)
+            public void onClick(DialogInterface dialog, int which) {
+
+                if(which==0)
                 {
+                    globalbutton.setText("Up");
 
                 }
-                else
+
+                if(which==1)
                 {
+                    globalbutton.setText("Down");
+
+                }
+
+                if(which==2)
+                {
+                    globalbutton.setText("Chunk");
+
+                }
+
+                if(which==3)
+                {
+                    globalbutton.setText("Rest");
 
                 }
 
             }
         });
 
-        b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked)
-                {
 
-                }
-                else
-                {
 
-                }
+        a.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                builder.show();
 
+                globalbutton=a;
+            }
+        });
+        b.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                builder.show();
+
+                globalbutton=b;
             }
         });
 
-        c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        c.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                builder.show();
 
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked)
-                {
-
-                }
-                else
-                {
-
-                }
-
+                globalbutton=c;
             }
         });
 
-        d.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        d.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                builder.show();
 
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked)
-                {
-
-                }
-                else
-                {
-
-                }
-
+                globalbutton=d;
             }
         });
+
+        e.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                builder.show();
+
+                globalbutton=e;
+            }
+        });
+
+        f.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                builder.show();
+
+                globalbutton=f;
+            }
+        });
+
+        g.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                builder.show();
+
+                globalbutton=g;
+            }
+        });
+
+        h.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                builder.show();
+
+                globalbutton=h;
+            }
+        });
+
+
+
 
 
 
@@ -256,6 +309,7 @@ public class MainActivity extends AppCompatActivity {
         //XML Connections
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
         bpmtext=(TextView)findViewById(R.id.bpmtext);
 
         bpmtext.setText("BPM");
@@ -296,15 +350,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.navmenu, menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.rec:
+                Intent myIntent = new Intent(getApplicationContext(), MainActivity2.class);
+                startActivityForResult(myIntent, 0);
+
+        }
+        return true;
+
+    }
+
+/*
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
 
 
             switch (position) {
 
             case 1:
-
-                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
-                startActivity(intent);
 
                 break;
 
@@ -321,6 +391,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     public void onNothingSelected(AdapterView<?> arg0) {
 // TODO Auto-generated method stub
 
@@ -328,7 +399,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+*/
 
 }
 

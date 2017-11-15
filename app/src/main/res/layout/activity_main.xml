@@ -99,34 +99,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
-        <ToggleButton
+        <Button
             android:id="@+id/Toggle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U" />
-        <ToggleButton
+            android:text ="Rest" />
+        <Button
             android:id="@+id/Toggle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U"/>
-        <ToggleButton
+            android:text="Rest"/>
+        <Button
             android:id="@+id/Toggle3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U"/>
-        <ToggleButton
+            android:text ="Rest"/>
+        <Button
             android:id="@+id/Toggle4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U"/>
+            android:text ="Rest"/>
 
     </LinearLayout>
 
@@ -137,34 +129,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
 
-        <ToggleButton
+        <Button
             android:id="@+id/Toggle5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U"/>
-        <ToggleButton
+            android:text ="Rest"/>
+        <Button
             android:id="@+id/Toggle6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U"/>
-        <ToggleButton
+            android:text ="Rest"/>
+        <Button
             android:id="@+id/Toggle7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U"/>
-        <ToggleButton
+            android:text ="Rest"/>
+        <Button
             android:id="@+id/Toggle8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:textOff="D"
-            android:textOn="U"/>
+            android:text ="Rest"/>
 
 
 
